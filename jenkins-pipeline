@@ -19,7 +19,7 @@ pipeline {
 		steps {
 			echo 'Dockerizing............................................................'
 			script {
-				docker.withRegistry("https://hub.docker.com", "docker") {
+				docker.withRegistry("https://hub.docker.com/repositories", "docker") {
 					    def image=docker.image("malharipawar/wordpress:001")
 					    image.push()
 				}
