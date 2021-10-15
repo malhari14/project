@@ -9,12 +9,9 @@ pipeline {
 			 docker ps
 			 docker pull wordpress
 			 docker tag wordpress:latest malharipawar/wordpress:001
-			 """
-			 
+			 """	 
 		}
-    
   	}
-	
 	stage('Dockerizing') {
 		steps {
 			echo 'Dockerizing............................................................'
@@ -26,7 +23,6 @@ pipeline {
 			}
 		}
 	}
-  	
   	stage('Deployment') {
 	steps {
 		echo 'Deploying..................................................................'
