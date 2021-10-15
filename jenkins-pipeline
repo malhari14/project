@@ -9,12 +9,23 @@ pipeline {
 			 docker ps
 			 docker pull wordpress
 			 docker tag wordpress:latest malharipawar/wordpress:001
-			 docker push malharipawar/wordpress:001
 			 """
 			 
 		}
     
   	}
+	
+	stage('Dockerizing') {
+		steps {
+			echo 'Dockerizing............................................................'
+			script {
+				docker.withRegistry("https://hub.docker.com", "docker") {
+					    def image=docker.image("malharipawar/wordpress:001")
+					    image.push()
+				}
+			}
+		}
+	}
   	
   	stage('Deployment') {
 	steps {
